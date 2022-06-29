@@ -1,8 +1,3 @@
-// Step 1
-
-// Make a function computerPlay
-// to play against a computer
-
 function computerPlay(rock, paper, scissors) {
 	let calc = Math.floor(Math.random() * 3) + 1;
 	if (calc == 1) {
@@ -14,20 +9,12 @@ function computerPlay(rock, paper, scissors) {
 	}
 }
 
-// It will randomly return either
-// Rock, Paper, or Scissors
-
-// We use this function to play against computer
-
-// Step 2
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
-let round = prompt("Pick between Rock, Paper, or Scissors:");
+round = prompt("Pick Rock, Paper, or Scissors:").toLowerCase();
 const playerSelection = round;
 const computerSelection = computerPlay();
-
-let rockCase = playerSelection.toLowerCase() === rock;
 
 function playRound(playerSelection, computerSelection) {
 	switch (playerSelection) {
@@ -95,30 +82,28 @@ function playRound(playerSelection, computerSelection) {
 			}
 			break;
 
-		default:
-			alert("error");
-			console.log("error");
+		case round:
+			if (round !== rock || paper || scissors) {
+				alert("Invalid hand or game cancelled");
+			}
 	}
 }
+
 playRound(playerSelection, computerSelection);
 
 function game() {
-	return playRound();
+	for (let i = 0; i < 5; i++) {
+		playRound(playerSelection, computerSelection);
+
+		let score = i + 1;
+		console.log(score);
+	}
+	if (playerSelection == 5) {
+		alert("You are the winner!");
+		console.log("You are the winner!");
+	} else if (computerSelection == 5) {
+		alert("You lost! The computer has won.");
+		console.log("You lost! The computer has won.");
+	}
 }
-
-// Write a function that plays a single round of RPS
-
-// Function should take 2 parameters
-
-// playerSelection and computerSelection
-// and return a string to declare a winner
-
-// playerSelection should be case insensitive
-
-// Step 3
-
-// Make a function called game
-// Call the playRound function to play 5 rounds
-// using for loop
-// It will keep track of score and report
-// winner/loser
+game();
