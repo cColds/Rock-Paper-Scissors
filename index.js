@@ -21,94 +21,125 @@ function playRound(playerSelection, computerSelection) {
 	switch (playerSelection) {
 		case "rock":
 			if (computerSelection == scissors) {
-				alert("You win! Rock beats scissors");
+				playerScore++;
+				alert(`You win! Rock beats scissors \n
+				Score: ${playerScore} - ${computerScore}`);
 
 				console.log(
-					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					Score: ${playerScore} - ${computerScore}`
 				);
 				console.log(computerSelection);
 			} else if (computerSelection == paper) {
-				alert("You lose! Paper beats rock");
+				computerScore++;
+				alert(`You lose! Paper beats rock\n
+				Score: ${playerScore} - ${computerScore}`);
 
 				console.log(
-					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					Score: ${playerScore} - ${computerScore}`
 				);
 				console.log(computerSelection);
+
+				console.log(playerScore);
 			} else {
-				alert("It's a tie! You both picked rock");
+				alert(`It's a tie! You both picked rock\n
+				Score: ${playerScore} - ${computerScore}`);
 
 				console.log(
-					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					Score: ${playerScore} - ${computerScore}`
 				);
 				console.log(computerSelection);
 			}
 			break;
 		case "paper":
 			if (computerSelection == paper) {
-				alert("It's a tie! You both picked paper");
+				alert(`It's a tie! You both picked paper \n
+				Score: ${playerScore} - ${computerScore}`);
 				console.log(
-					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					Score: ${playerScore} - ${computerScore}`
 				);
 			} else if (computerSelection == scissors) {
-				alert("You lose! Scissors beats paper");
+				computerScore++;
+				alert(`You lose! Scissors beats paper \n
+				Score: ${playerScore} - ${computerScore}`);
 				console.log(
-					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection} \n
+					Score: ${playerScore} - ${computerScore}`
 				);
+
+				console.log(computerScore);
 			} else {
-				alert("You win! Paper beats rock");
+				playerScore++;
+				alert(`You win! Paper beats rock \n
+				Score: ${playerScore} - ${computerScore}`);
 
 				console.log(
-					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection} \n
+					Score: ${playerScore} - ${computerScore}`
 				);
 			}
 			break;
 		case "scissors":
 			if (computerSelection == paper) {
-				alert("You win! Scissors beats paper");
+				playerScore++;
+				alert(`You win! Scissors beats paper\n
+				Score: ${playerScore} - ${computerScore}`);
 				console.log(
-					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					 Score: ${playerScore} - ${computerScore}`
 				);
 			} else if (computerSelection == rock) {
-				alert("You lose! Rock beats scissors");
+				computerScore++;
+				alert(`You lose! Rock beats scissors \n
+				Score: ${playerScore} - ${computerScore}`);
 				console.log(
-					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
+					 Score: ${playerScore} - ${computerScore}`
 				);
+
+				console.log(computerScore);
 			} else {
-				alert("It's a tie! You both picked scissors");
+				alert(`It's a tie! You both picked scissors \n
+				Score: ${playerScore} - ${computerScore}`);
 
 				console.log(
-					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}`
+					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}
+					 Score: ${playerScore} - ${computerScore}`
 				);
 			}
 			break;
 
-		case round:
-			if (round !== rock || paper || scissors) {
-				alert("Invalid hand or game cancelled");
-			}
+		default:
+			alert("Invalid hand or game cancelled");
 	}
 }
 
 // playRound(playerSelection, computerSelection);
 
 function game() {
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 20; i++) {
 		const computerSelection = computerPlay();
+
+		if (playerScore == 5) {
+			alert(`Game over! You win. \n
+			Final Score: ${playerScore} - ${computerScore}`);
+			console.log(`Game over! You win. \n
+			Final Score: ${playerScore} - ${computerScore}`);
+			break;
+		} else if (computerScore == 5) {
+			alert(`Game over! You lose. \n
+			Final Score: ${playerScore} - ${computerScore}`);
+			console.log(`Game over! You win. \n
+			Final Score: ${playerScore} - ${computerScore}`);
+			break;
+		}
 
 		let round = prompt("Pick Rock, Paper, or Scissors:").toLowerCase();
 		let playerSelection = round;
 		playRound(playerSelection, computerSelection);
-
-		// 	playerScore = playerSelection + i;
-		// 	computerScore = computerSelection + i;
-
-		// 	if (playerScore == 5) {
-		// 		alert("You are the winner!");
-		// 		console.log("You are the winner!");
-		// 	} else if (computerScore == 5) {
-		// 		alert("You lost! The computer has won.");
-		// 		console.log("You lost! The computer has won.");
-		// 	}
 	}
 }
 game();
