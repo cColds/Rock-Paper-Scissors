@@ -12,9 +12,7 @@ function computerPlay(rock, paper, scissors) {
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
-// let round = prompt("Pick Rock, Paper, or Scissors:").toLowerCase();
-// let playerSelection = round;
-// const computerSelection = computerPlay();
+
 let playerScore = 0;
 let computerScore = 0;
 function playRound(playerSelection, computerSelection) {
@@ -117,10 +115,8 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-// playRound(playerSelection, computerSelection);
-
 function game() {
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 30; i++) {
 		const computerSelection = computerPlay();
 
 		if (playerScore == 5) {
