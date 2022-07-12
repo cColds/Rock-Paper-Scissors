@@ -16,15 +16,20 @@ let playerScore = 0;
 let computerScore = 0;
 
 const rockButton = document.querySelector(".rock");
-rockButton.addEventListener("click", () => playRound(rock, computerPlay()));
+rockButton.addEventListener("click", () => {
+	playRound(rock, computerPlay());
+});
 
 const paperButton = document.querySelector(".paper");
 paperButton.addEventListener("click", () => playRound(paper, computerPlay()));
 
 const scissorsButton = document.querySelector(".scissors");
-scissorsButton.addEventListener("click", () =>
-	playRound(scissors, computerPlay())
-);
+scissorsButton.addEventListener("click", () => {
+	const audio = document.querySelector(".scissor-cut");
+	audio.currentTime = 0;
+	audio.play();
+	playRound(scissors, computerPlay());
+});
 
 const outcome = document.querySelector(".info");
 const para = document.querySelector(".handwin");
@@ -61,6 +66,7 @@ function restart() {
 }
 
 function playRound(playerSelection, computerSelection) {
+	console.log(playerSelection);
 	if (checkWinner()) return;
 	switch (playerSelection) {
 		case "rock":
