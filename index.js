@@ -12,130 +12,169 @@ function computerPlay(rock, paper, scissors) {
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
-
 let playerScore = 0;
 let computerScore = 0;
+
+const rockButton = document.querySelector(".rock");
+rockButton.addEventListener("click", () => playRound(rock, computerPlay()));
+
+const paperButton = document.querySelector(".paper");
+paperButton.addEventListener("click", () => playRound(paper, computerPlay()));
+
+const scissorsButton = document.querySelector(".scissors");
+scissorsButton.addEventListener("click", () =>
+	playRound(scissors, computerPlay())
+);
+
+const outcome = document.querySelector(".info");
+const para = document.querySelector(".handwin");
+const playerScoreCount = document.querySelector(".playerScores");
+const computerScoreCount = document.querySelector(".computerScores");
+
+let currentPlayerScore = 0;
+let currentComputerScore = 0;
+
+const playerEmoji = document.querySelector(".player");
+const computerEmoji = document.querySelector(".computer");
+const playAgain = document.querySelector(".restart");
+playAgain.addEventListener("click", restart);
+const restartDiv = document.querySelector(".restart-container");
+function checkWinner() {
+	if (currentComputerScore >= 5 || currentPlayerScore >= 5) {
+		const wonOrLost = currentComputerScore >= 5 ? "lost" : "win";
+		outcome.textContent = `Game over! You ${wonOrLost}!`;
+		return true;
+	}
+}
+
+function restart() {
+	console.log("aple");
+	outcome.textContent = "Pick your hand";
+	para.textContent = "First to score 5 points wins the game";
+	playerEmoji.textContent = "❔";
+	computerEmoji.textContent = "❔";
+	currentPlayerScore = 0;
+	currentComputerScore = 0;
+	playerScoreCount.textContent = `Player: 0`;
+	computerScoreCount.textContent = `Computer: 0`;
+	restartDiv.classList.toggle("active");
+}
+
 function playRound(playerSelection, computerSelection) {
+	if (checkWinner()) return;
 	switch (playerSelection) {
 		case "rock":
 			if (computerSelection == scissors) {
-				playerScore++;
-				alert(`You win! Rock beats scissors \n
-				Score: ${playerScore} - ${computerScore}`);
-
+				currentPlayerScore++;
+				outcome.textContent = "You win!";
+				para.textContent = "Rock beats scissors";
+				playerScoreCount.textContent = `Player: ${currentPlayerScore}`;
+				playerEmoji.textContent = "✊";
+				computerEmoji.textContent = "✌";
 				console.log(
-					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					Score: ${playerScore} - ${computerScore}`
+					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection} \n
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
-				console.log(computerSelection);
 			} else if (computerSelection == paper) {
-				computerScore++;
-				alert(`You lose! Paper beats rock\n
-				Score: ${playerScore} - ${computerScore}`);
-
+				currentComputerScore++;
+				outcome.textContent = "You lose!";
+				para.textContent = "Rock loses to paper";
+				computerScoreCount.textContent = `Computer: ${currentComputerScore}`;
+				playerEmoji.textContent = "✊";
+				computerEmoji.textContent = "✋";
 				console.log(
 					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					Score: ${playerScore} - ${computerScore}`
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
-				console.log(computerSelection);
 
 				console.log(playerScore);
 			} else {
-				alert(`It's a tie! You both picked rock\n
-				Score: ${playerScore} - ${computerScore}`);
-
+				outcome.textContent = "It's a tie!";
+				para.textContent = "Rock ties with rock";
+				playerEmoji.textContent = "✊";
+				computerEmoji.textContent = "✊";
 				console.log(
 					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					Score: ${playerScore} - ${computerScore}`
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
-				console.log(computerSelection);
 			}
 			break;
 		case "paper":
 			if (computerSelection == paper) {
-				alert(`It's a tie! You both picked paper \n
-				Score: ${playerScore} - ${computerScore}`);
+				outcome.textContent = "It's a tie!";
+				para.textContent = "Paper ties with paper";
+				playerEmoji.textContent = "✋";
+				computerEmoji.textContent = "✋";
 				console.log(
 					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					Score: ${playerScore} - ${computerScore}`
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
 			} else if (computerSelection == scissors) {
-				computerScore++;
-				alert(`You lose! Scissors beats paper \n
-				Score: ${playerScore} - ${computerScore}`);
+				currentComputerScore++;
+				outcome.textContent = "You lose!";
+				para.textContent = "Paper loses to scissors";
+				playerEmoji.textContent = "✋";
+				computerEmoji.textContent = "✌";
+				computerScoreCount.textContent = `Computer: ${currentComputerScore}`;
 				console.log(
 					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection} \n
-					Score: ${playerScore} - ${computerScore}`
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
 
 				console.log(computerScore);
 			} else {
-				playerScore++;
-				alert(`You win! Paper beats rock \n
-				Score: ${playerScore} - ${computerScore}`);
-
+				currentPlayerScore++;
+				outcome.textContent = "You win!";
+				para.textContent = "Paper beats rock";
+				playerEmoji.textContent = "✋";
+				computerEmoji.textContent = "✊";
+				playerScoreCount.textContent = `Player: ${currentPlayerScore}`;
 				console.log(
 					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection} \n
-					Score: ${playerScore} - ${computerScore}`
+					Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
 			}
 			break;
 		case "scissors":
 			if (computerSelection == paper) {
-				playerScore++;
-				alert(`You win! Scissors beats paper\n
-				Score: ${playerScore} - ${computerScore}`);
+				currentPlayerScore++;
+				outcome.textContent = "You win!";
+				para.textContent = "Scissors beats paper";
+				playerScoreCount.textContent = `Player: ${currentPlayerScore}`;
+				playerEmoji.textContent = "✌";
+				computerEmoji.textContent = "✋";
 				console.log(
 					`You win! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					 Score: ${playerScore} - ${computerScore}`
+					 Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
 			} else if (computerSelection == rock) {
-				computerScore++;
-				alert(`You lose! Rock beats scissors \n
-				Score: ${playerScore} - ${computerScore}`);
+				currentComputerScore++;
+				outcome.textContent = "You lose!";
+				para.textContent = "Scissors loses to rock";
+				playerEmoji.textContent = "✌";
+				computerEmoji.textContent = "✊";
+				computerScoreCount.textContent = `Computer: ${currentComputerScore}`;
 				console.log(
 					`You lose! You picked ${playerSelection}, and the computer picked ${computerSelection}\n
-					 Score: ${playerScore} - ${computerScore}`
+					 Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
-
-				console.log(computerScore);
 			} else {
-				alert(`It's a tie! You both picked scissors \n
-				Score: ${playerScore} - ${computerScore}`);
-
+				outcome.textContent = "It's a tie!";
+				para.textContent = "Scissors ties with scissors";
+				playerEmoji.textContent = "✌";
+				computerEmoji.textContent = "✌";
 				console.log(
 					`It's a tie! You picked ${playerSelection}, and the computer picked ${computerSelection}
-					 Score: ${playerScore} - ${computerScore}`
+					 Score: ${currentPlayerScore} - ${currentComputerScore}`
 				);
 			}
 			break;
 
 		default:
-			alert("Invalid hand or game cancelled");
+			console.log("error");
+	}
+	if (checkWinner()) {
+		restartDiv.classList.toggle("active");
+		return;
 	}
 }
-
-function game() {
-	for (let i = 0; i < 30; i++) {
-		const computerSelection = computerPlay();
-
-		if (playerScore == 5) {
-			alert(`Game over! You win. \n
-			Final Score: ${playerScore} - ${computerScore}`);
-			console.log(`Game over! You win. \n
-			Final Score: ${playerScore} - ${computerScore}`);
-			break;
-		} else if (computerScore == 5) {
-			alert(`Game over! You lose. \n
-			Final Score: ${playerScore} - ${computerScore}`);
-			console.log(`Game over! You win. \n
-			Final Score: ${playerScore} - ${computerScore}`);
-			break;
-		}
-
-		let round = prompt("Pick Rock, Paper, or Scissors:").toLowerCase();
-		let playerSelection = round;
-		playRound(playerSelection, computerSelection);
-	}
-}
-game();

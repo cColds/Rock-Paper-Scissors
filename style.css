@@ -1,34 +1,110 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: lightgrey;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	background-color: #222831;
+
+	font-family: "Roboto", Helvetica;
 }
 
-.rps {
+.header {
+	background-color: rgb(114, 112, 112);
+	padding: 1px;
+}
+
+.rps-title {
 	display: flex;
 	justify-content: center;
 
-	font-size: 50px;
+	font-size: 35px;
+	color: #ddd;
 }
-
-.question {
+.winner {
 	display: flex;
-	font-size: 25px;
-	margin-left: 50px;
+	align-items: center;
+	flex-direction: column;
+	font-size: 30px;
+	font-weight: bold;
+	color: #ddd;
+	margin-top: 50px;
 }
-
-.info {
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 500px;
-	margin-left: 50px;
+.winner p {
 	font-size: 20px;
 }
 
-.gl {
-	margin-left: 50px;
-	font-weight: bold;
+.rps-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+	gap: 50px;
+}
+
+.rock,
+.paper,
+.scissors {
+	width: 175px;
+	height: 175px;
+	background-color: rgb(196, 192, 192);
+	box-sizing: border-box;
+	border-radius: 15px;
+	background-color: #393e46;
+	font-size: 100px;
+	color: white;
+	cursor: pointer;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+	opacity: 0.8;
+	background-color: rgb(131, 128, 128);
+}
+
+.rounds {
+	display: flex;
+	gap: 300px;
+	justify-content: center;
+	margin-top: 100px;
+	color: #ddd;
 	font-size: 30px;
+}
+
+/* .player,
+.computer {
+	width: 200px;
+} */
+button {
+	border: none;
+}
+
+.player,
+.computer {
+	font-size: 80px;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+}
+
+.restart {
+	background-color: rgb(9, 175, 9);
+	box-sizing: border-box;
+	border-radius: 15px;
+	width: 170px;
+	height: 50px;
+	color: #ddd;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.restart:hover {
+	opacity: 0.9;
+}
+
+.restart-container {
+	display: none;
+	margin-top: 50px;
+}
+.restart-container.active {
+	display: flex;
+	justify-content: center;
 }
