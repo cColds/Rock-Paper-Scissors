@@ -13,6 +13,6 @@
 
 # Outcome
 
--   Learned to create a new branch, merge a branch, and delete a branch
-- Learned to code an AI to play against with JavaScript 
--   Sharpened knowledge in JavaScript and Dom Manipulation
+-   Learned how to create a new branch, merge a branch, and delete a branch
+- Learned how to code an AI to play against with JavaScript 
+- Learned how to implement Dom Manipulation
