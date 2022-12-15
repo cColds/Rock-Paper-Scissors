@@ -8,8 +8,11 @@
 
 -   HTML, CSS, and JavaScript
 -   Dom Manipulation
+- AI that you can play against
+- Play Again Button
 
 # Outcome
 
--   Learned how to create a new branch, merge a branch, and delete a branch
+-   Learned to create a new branch, merge a branch, and delete a branch
+- Learned to code an AI to play against with JavaScript 
 -   Sharpened knowledge in JavaScript and Dom Manipulation
